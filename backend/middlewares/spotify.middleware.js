@@ -1,6 +1,6 @@
 const User = require("../models/User");
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 const validateAccess = async (req, res, next) => {
     console.log('entered in validateAccess middleware')
@@ -50,7 +50,13 @@ const validateAccess = async (req, res, next) => {
                 return res.status(400).json({ message: "User's spotify account is not validated", success: false })
             }
             await User.updateOne({ _id: user.id }, {
-                Spotify: response
+                $set: {
+                    "Spotify.access_token": response.access_token,
+                    "Spotify.refresh_token": response.refresh_token,
+                    "Spotify.expires_in": response.expires_in,
+                    "Spotify.created_at": response.Date.now(),
+                    "Spotify.scope": response.scope,
+                }
             });
             user.access_token = response.access_token;
             console.log('spotify validateAccessToken is passed')
