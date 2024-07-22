@@ -22,6 +22,14 @@ const spotify = new Schema({
         type: String,
         required: true
     },
+    created_at: {
+        type: Date,
+        required: true
+    },
+    profile: {
+        type: Object,
+        default: {}
+    }
 })
 const UserSchema = new Schema({
     Name: {
