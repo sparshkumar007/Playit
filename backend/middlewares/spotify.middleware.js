@@ -11,11 +11,11 @@ const validateAccess = async (req, res, next) => {
         }
         const user = await User.findOne({ _id: userId });
         const userSpotify = user.Spotify;
+        console.log('user.Spotidy: ', userSpotify)
         if (!userSpotify || !userSpotify.access_token || !userSpotify.refresh_token) {
             return res.status(400).json({ message: "User's spotify account is not validated", success: false });
         }
-        console.log(userSpotify)
-        const access_token = userSpotify['access_token'];
+        const access_token = userSpotify.access_token;
         const refresh_token = userSpotify.refresh_token;
         const expires_in = userSpotify.expires_in;
         const created_at = userSpotify.created_at;
@@ -54,7 +54,7 @@ const validateAccess = async (req, res, next) => {
                     "Spotify.access_token": response.access_token,
                     "Spotify.refresh_token": response.refresh_token,
                     "Spotify.expires_in": response.expires_in,
-                    "Spotify.created_at": response.Date.now(),
+                    "Spotify.created_at": Date.now(),
                     "Spotify.scope": response.scope,
                 }
             });

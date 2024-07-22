@@ -80,7 +80,7 @@ const spotifyUserDetails = async (req, res) => {
         const userId = req.userId;
         const access_token = req.access_token;
         if (!userId || !access_token) {
-            console.log("userid or accesstoken not found in spotifyUserDetails");
+            console.log("userid or accesstoken not found in spotifyUserDetails in spotify controller");
             return res.status(400).json({ message: "Invalid Action", success: false });
         }
 
@@ -107,7 +107,7 @@ const fetchPlaylists = async (req, res) => {
         const userId = req.userId;
         const access_token = req.access_token;
         if (!userId || !access_token) {
-            console.log("userid or accesstoken not found in spotifyUserDetails");
+            console.log("userid or accesstoken not found in fetchPlaylists in spotify ocntroller");
             return res.status(400).json({ message: "Invalid Action", success: false });
         }
         const user = await User.findOne({ _id: userId })
@@ -143,7 +143,7 @@ const fetchSongs = async (req, res) => {
         const access_token = req.access_token;
         const { playlist_id } = req.params;
         if (!userId || !access_token) {
-            console.log("userid or accesstoken not found in spotifyUserDetails");
+            console.log("userid or accesstoken not found in fetchSings in spotiy cotntroller");
             return res.status(400).json({ message: "Invalid Action", success: false });
         }
         const user = await User.findOne({ _id: userId })
@@ -185,7 +185,7 @@ const addPlaylist = async (req, res) => {
         const access_token = req.access_token;
         const { playlist_name, playlist_description } = req.body;
         if (!userId || !access_token) {
-            console.log("userid or accesstoken not found in spotifyUserDetails");
+            console.log("userid or accesstoken not found in addPlaylist in spotify controller");
             return res.status(400).json({ message: "Invalid Action", success: false });
         }
         const user = await User.findOne({ _id: userId })
@@ -227,7 +227,7 @@ const addSong = async (req, res) => {
 
 
         if (!userId || !access_token) {
-            console.log("userid or accesstoken not found in spotifyUserDetails");
+            console.log("userid or accesstoken not found in addSong spotifyController");
             return res.status(400).json({ message: "Invalid Action", success: false });
         }
 
