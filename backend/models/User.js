@@ -1,6 +1,28 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const spotify = new Schema({
+    access_token: {
+        type: String,
+        required: true
+    },
+    token_type: {
+        type: String,
+        required: true
+    },
+    scope: {
+        type: String,
+        required: true
+    },
+    expires_in: {
+        type: Number,
+        required: true
+    },
+    refresh_token: {
+        type: String,
+        required: true
+    },
+})
 const UserSchema = new Schema({
     Name: {
         type: String,
@@ -23,6 +45,9 @@ const UserSchema = new Schema({
     Admin: {
         type: Boolean,
         default: 0
+    },
+    Spotify: {
+        type: spotify,
     }
 });
 

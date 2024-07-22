@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
+    let url = import.meta.env.VITE_LOCAL_SERVER;
+    if (import.meta.env.PROD) {
+        url = import.meta.env.VITE_DEPLOYED_SERVER;
+    }
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
@@ -45,7 +49,7 @@ const SignUp = () => {
         if (!validateForm()) return;
 
         setLoading(true);
-        const data = await fetch('http://localhost:4000/api/auth/signup', {
+        const data = await fetch(`${url}/api/auth/signup`, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -116,6 +120,10 @@ const SignUp = () => {
                                 "Sign Up"
                             )}
                         </button>
+                    </div>
+                    <br></br>
+                    <div>
+                        Alredy have an account? <Link to="/login">Login</Link>
                     </div>
                 </form>
             </div>
