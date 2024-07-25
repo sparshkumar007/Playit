@@ -21,9 +21,9 @@ const Home = () => {
     //     loadHome();
     // }, []);
     return (
-        <>
+        <div className='print-on-black'>
             Home page
-        </>
+        </div>
     )
 }
 

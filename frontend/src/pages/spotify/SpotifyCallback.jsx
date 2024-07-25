@@ -37,7 +37,7 @@ const SpotifyCallback = () => {
     return (
         <>
             <div>{message}</div>
-            <button type="button" class="btn btn-primary" onClick={() => { navigate('/spotify') }}>Home</button>
+            <button type="button" className="btn btn-primary" onClick={() => { navigate('/spotify') }}>Home</button>
         </>
     )
 }

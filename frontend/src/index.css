@@ -1,5 +1,5 @@
 :root {
-  --text-color: #ffffff;
+  --text-color-white: rgb(255, 255, 255);
   /* White */
   --primary-color: #74b9ff;
   /* Light blue */
@@ -23,18 +23,19 @@
   /* Darker semi-transparent black */
 }
 
+print-on-black
+
 /* Reset styles for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white
 }
 
 /* Set the font family and background color for the entire page */
 body,
 html,
-#root {
+print-on-black #root {
   font-family: "Roboto", sans-serif;
   background-color: var(--background-color);
   height: 100%;
@@ -43,6 +44,21 @@ html,
   /* Create a background gradient using radial and linear gradients */
   background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.9) 100%),
     linear-gradient(var(--gradient-color-start), var(--gradient-color-end));
+}
+
+.print-on-black {
+  color: var(--text-color-white);
+}
+
+.playlist-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.playlist-card {
+  margin: 2%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* Set smooth scrolling behavior for the page */

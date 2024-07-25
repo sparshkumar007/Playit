@@ -9,6 +9,8 @@ import SpotifyHome from './pages/spotify/SpotifyHome'
 import AuthenticateSpotify from './pages/spotify/AuthenticateSpotify'
 import Navbar from './components/navbar/Navbar'
 import SpotifyCallback from './pages/spotify/SpotifyCallback'
+import SpotifyPlaylists from './pages/spotify/SpotifyPlaylists'
+import SpotifySongs from './pages/spotify/SpotifySongs'
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         <Route path="/spotify" element={<SpotifyHome />}></Route>
         <Route path="/spotifycallback" element={<SpotifyCallback />}></Route>
         <Route path="/spotifyAuth" element={<AuthenticateSpotify />}></Route>
+        <Route path="/spotifyPlaylists" element={<SpotifyPlaylists />}></Route>
+        <Route path="/spotifyPlaylists" element={<SpotifyPlaylists />}></Route>
+        <Route path="/spotifySongs" element={<SpotifySongs />}></Route>
       </Routes >
       <ToastContainer />
     </>

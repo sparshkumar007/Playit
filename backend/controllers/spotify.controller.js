@@ -157,6 +157,7 @@ const fetchSongs = async (req, res) => {
             }
         });
         response = await response.json();
+        // console.log(response);
         const songs = response.tracks.items;
         // console.log('songs: ',songs);
 
