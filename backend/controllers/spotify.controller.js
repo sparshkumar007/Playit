@@ -185,6 +185,7 @@ const addPlaylist = async (req, res) => {
         const userId = req.userId;
         const access_token = req.access_token;
         const { playlist_name, playlist_description } = req.body;
+        console.log('request body: ', req.body);
         if (!userId || !access_token) {
             console.log("userid or accesstoken not found in addPlaylist in spotify controller");
             return res.status(400).json({ message: "Invalid Action", success: false });
@@ -212,7 +213,7 @@ const addPlaylist = async (req, res) => {
         })
         response = await response.json();
         console.log(response);
-        res.status(200).send({ message: "An empty playlist is created succesfully", success: true })
+        res.status(200).json({ message: "An empty playlist is created succesfully", success: true })
     } catch (err) {
         console.log('Error catched in addPlaylist in spotify controller');
         res.status(500).json({ message: "Internal Server Error...." });
@@ -240,7 +241,7 @@ const addSong = async (req, res) => {
 
         if (!playlist_id || !song_uris) {
             console.log("song uri or playlists id not found in spotifyUserDetails");
-            return res.status(400).json({ message: "name and description is needed", success: false });
+            return res.status(400).json({ message: "playlist_id and song_uris is needed", success: false });
         }
 
 
@@ -257,10 +258,47 @@ const addSong = async (req, res) => {
         })
         response = await response.json();
         console.log(response);
-        res.status(200).send({ message: "Provided songs added succesfully", success: true })
+        res.status(200).json({ message: "Provided songs added succesfully", success: true })
     } catch (error) {
         console.log('Error catched in addSong in spotify controller: ', error);
         res.status(500).json({ message: "Internal Server Error...." });
     }
 }
-module.exports = { addPlaylist, fetchAccessToken, spotifyUserDetails, fetchPlaylists, fetchSongs, addSong };
+
+const fetchSong = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const access_token = req.access_token;
+        const { song_id } = req.params;
+        if (!userId || !access_token) {
+            console.log("userid or accesstoken not found in addSong spotifyController");
+            return res.status(400).json({ message: "Invalid Action", success: false });
+        }
+
+        const user = await User.findOne({ _id: userId })
+        if (!user) {
+            throw new Error("couldn't find user in database")
+        }
+
+        if (!song_id) {
+            return res.status(400).json({ message: "Song Id is missing!!", status: false });
+        }
+
+        console.log(access_token);
+        let response = await fetch(`${process.env.SPOTIFY_URL}/tracks/${song_id}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${access_token}`
+            }
+        });
+        response = await response.json();
+        console.log('response: ', response);
+        res.status(200).json({ message: "Song fetched successfully ", status: true, name: response.album.name });
+
+    } catch (error) {
+        console.log('Error caught in fetchSong in spotify.controller: ', error);
+        res.status(500).json({ message: "Internal Server Error", success: false });
+    }
+}
+
+module.exports = { addPlaylist, fetchAccessToken, spotifyUserDetails, fetchPlaylists, fetchSongs, addSong, fetchSong };

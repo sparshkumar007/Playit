@@ -11,6 +11,8 @@ import Navbar from './components/navbar/Navbar'
 import SpotifyCallback from './pages/spotify/SpotifyCallback'
 import SpotifyPlaylists from './pages/spotify/SpotifyPlaylists'
 import SpotifySongs from './pages/spotify/SpotifySongs'
+import SpotifyAddPlaylist from './pages/spotify/SpotifyAddPlaylist'
+import SpotifyAddSongs from './pages/spotify/SpotifyAddSongs'
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/spotifyPlaylists" element={<SpotifyPlaylists />}></Route>
         <Route path="/spotifyPlaylists" element={<SpotifyPlaylists />}></Route>
         <Route path="/spotifySongs" element={<SpotifySongs />}></Route>
+        <Route path="/spotifyAddPlaylist" element={<SpotifyAddPlaylist />}></Route>
+        <Route path="/spotifyAddSongs" element={<SpotifyAddSongs />}></Route>
       </Routes >
       <ToastContainer />
     </>

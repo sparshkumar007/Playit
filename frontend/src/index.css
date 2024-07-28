@@ -61,6 +61,23 @@ print-on-black #root {
   flex-wrap: wrap;
 }
 
+.playlist-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.playlist-input {
+  width: 50%;
+  margin: 1px;
+}
+
+.playlist-input-buttons {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 /* Set smooth scrolling behavior for the page */
 html {
   scroll-behavior: smooth;

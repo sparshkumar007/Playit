@@ -27,6 +27,10 @@ const SpotifyPlaylists = () => {
         navigate('/spotifySongs')
         // write code to load songs page
     }
+    const addPlaylist = async () => {
+        console.log('addPlaylist called...');
+        navigate('/spotifyAddPlaylist');
+    }
     useEffect(() => {
         sessionStorage.removeItem('playlistId');
         getPlaylists();
@@ -37,6 +41,9 @@ const SpotifyPlaylists = () => {
     return (
         <>
             <div className='print-on-black'>Playlists</div>
+            <div>
+                <button className='btn btn-primary' onClick={addPlaylist}>Add Playlist</button>
+            </div>
             <div className='playlist-container'>
                 {playlists.map(item => (
                     <Card key={item.id} id={item.id} name={item.name} handleClick={() => { handleClick(item.id) }} />
