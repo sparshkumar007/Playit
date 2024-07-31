@@ -37,6 +37,10 @@ const lastfm = new Schema({
         type: String,
         required: true
     },
+    user_name: {
+        type: String,
+        required: true
+    },
     profile: {
         type: Object,
         default: {}

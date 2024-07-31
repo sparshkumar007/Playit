@@ -3,7 +3,7 @@ import React from 'react'
 
 const LastfmAuth = () => {
     const handleClick = async () => {
-        const url = "http://www.last.fm/api/auth/?api_key=4c0f6e8c54def1d02b8c5746ab7aae9e&cb=http://localhost:5173/lastfm";
+        const url = "http://www.last.fm/api/auth/?api_key=4c0f6e8c54def1d02b8c5746ab7aae9e&cb=http://localhost:5173/lastfmCallback";
         window.location.href = url;
     }
     return (

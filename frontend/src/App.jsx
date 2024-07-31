@@ -15,6 +15,7 @@ import SpotifyAddPlaylist from './pages/spotify/SpotifyAddPlaylist'
 import SpotifyAddSongs from './pages/spotify/SpotifyAddSongs'
 import LastfmHome from './pages/lastFm/LastfmHome'
 import LastfmAuth from './pages/lastFm/LastfmAuth'
+import LastfmCallback from './pages/lastFm/LastfmCallback'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 
         <Route path="/lastfm" element={<LastfmHome />}></Route>
         <Route path="/lastfmAuth" element={<LastfmAuth />}></Route>
+        <Route path="/lastfmCallback" element={<LastfmCallback />}></Route>
       </Routes >
       <ToastContainer />
     </>

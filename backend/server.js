@@ -4,6 +4,7 @@ const connectToMongo = require('./config/db.js');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
+const { verifyAuthToken } = require('./middlewares/auth.middleware.js');
 
 dotenv.config();
 
@@ -35,8 +36,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // Routes
 app.use('/api/auth', require('./routes/auth.js'));
-app.use('/api/spotify', require('./routes/spotify.js'));
-app.use('/api/lastfm', require('./routes/lastfm.js'));
+app.use('/api/spotify', verifyAuthToken, require('./routes/spotify.js'));
+app.use('/api/lastfm', verifyAuthToken, require('./routes/lastfm.js'));
 
 
 app.listen(PORT, () => {

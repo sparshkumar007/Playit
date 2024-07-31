@@ -5,11 +5,11 @@ const { validateAccess } = require('../middlewares/spotify.middleware');
 
 const router = express.Router();
 
-router.get('/fetchAccessToken', verifyAuthToken, fetchAccessToken);
-router.get('/profile', verifyAuthToken, validateAccess, spotifyUserDetails);
-router.get('/fetchPlaylists', verifyAuthToken, validateAccess, fetchPlaylists);
-router.get('/fetchSongs/:playlist_id', verifyAuthToken, validateAccess, fetchSongs);
-router.post('/addPlaylist', verifyAuthToken, validateAccess, addPlaylist);
-router.post('/addSongs/:playlist_id', verifyAuthToken, validateAccess, addSong);
-router.get('/fetchSong/:song_id', verifyAuthToken, validateAccess, fetchSong);
+router.get('/fetchAccessToken', fetchAccessToken);
+router.get('/profile', validateAccess, spotifyUserDetails);
+router.get('/fetchPlaylists', validateAccess, fetchPlaylists);
+router.get('/fetchSongs/:playlist_id', validateAccess, fetchSongs);
+router.post('/addPlaylist', validateAccess, addPlaylist);
+router.post('/addSongs/:playlist_id', validateAccess, addSong);
+router.get('/fetchSong/:song_id', validateAccess, fetchSong);
 module.exports = router;
