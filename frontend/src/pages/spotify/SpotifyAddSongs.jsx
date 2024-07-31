@@ -17,8 +17,9 @@ const SpotifyAddSongs = () => {
         console.log('song Id: ', id);
         let response = await fetch(`${url}/api/spotify/fetchSong/${id}`, {
             method: 'GET',
+            credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -52,8 +53,9 @@ const SpotifyAddSongs = () => {
             try {
                 let response = await fetch(`${url}/api/spotify/fetchSong/${item}`, {
                     method: 'GET',
+                    credentials: 'include',
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                        // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
                         'Content-Type': 'application/json'
                     }
                 });
@@ -93,8 +95,9 @@ const SpotifyAddSongs = () => {
             let response = await fetch(`${url}/api/spotify/addSongs/${playlistId}`, {
                 method: 'POST',
                 mode: "cors",
+                credentials: 'include',
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({

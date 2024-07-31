@@ -11,8 +11,9 @@ const SpotifyHome = () => {
     const getUser = async () => {
         let response = await fetch(`${url}/api/spotify/profile`, {
             method: 'GET',
+            credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             }
         })
         response = await response.json();

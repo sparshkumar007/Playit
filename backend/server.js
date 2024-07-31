@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const connectToMongo = require('./config/db.js');
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ const corsOptions = {
     optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 };
 
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 4000;
@@ -34,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // Routes
 app.use('/api/auth', require('./routes/auth.js'));
 app.use('/api/spotify', require('./routes/spotify.js'));
+app.use('/api/lastfm', require('./routes/lastfm.js'));
 
 
 app.listen(PORT, () => {

@@ -65,8 +65,12 @@ const userLogin = async (req, res) => {
         const userId = user._id;
 
         var token = jwt.sign({ userId: userId }, process.env.SIGNATURE, { expiresIn: '2h' });
-
-        res.status(200).json({ success: true, message: "user is successfully logged in..", authToken: token });
+        var expiryDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
+        res.cookie("authToken", token, {
+            httpOnly: true,
+            expires: expiryDate,
+            secure: false,
+        }).status(200).json({ success: true, message: "user is successfully logged in.." });
     } catch (err) {
         console.log('Error catched in userLogin in controllers');
         console.log(err);

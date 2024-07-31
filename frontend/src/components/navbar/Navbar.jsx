@@ -23,10 +23,16 @@ const Navbar = () => {
                             <Link className="nav-link" to="/spotify">Spotify</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to="/lastfm">LastFm</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to="/login">Login</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/spotifyAuth">Authenticate Spotify</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/lastfmAuth">Authenticate LastFm</Link>
                         </li>
                     </ul>
                 </div>

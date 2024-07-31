@@ -31,6 +31,18 @@ const spotify = new Schema({
         default: {}
     }
 })
+
+const lastfm = new Schema({
+    session_token: {
+        type: String,
+        required: true
+    },
+    profile: {
+        type: Object,
+        default: {}
+    }
+})
+
 const UserSchema = new Schema({
     Name: {
         type: String,
@@ -56,6 +68,9 @@ const UserSchema = new Schema({
     },
     Spotify: {
         type: spotify,
+    },
+    Lastfm: {
+        type: lastfm
     }
 });
 

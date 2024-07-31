@@ -11,7 +11,7 @@ const AuthenticateSpotify = () => {
         return result;
     }
     const handleClick = async () => {
-        const authToken = localStorage.getItem('authToken');
+        // const authToken = localStorage.getItem('authToken');
         const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
         const targetUrl = 'https://accounts.spotify.com/authorize';
         const state = generateRandomString(16);

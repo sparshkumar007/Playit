@@ -13,8 +13,9 @@ const SpotifyPlaylists = () => {
         const data = [];
         let response = await fetch(`${url}/api/spotify/fetchPlaylists`, {
             method: 'GET',
+            credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             }
         });
         response = await response.json();

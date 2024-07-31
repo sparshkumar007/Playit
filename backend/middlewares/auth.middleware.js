@@ -3,12 +3,15 @@ const verifyAuthToken = async (req, res, next) => {
     try {
         console.log('passing through auth.middleware');
         const { authorization } = req.headers;
+        console.log('cookie: ', req.cookies);
         // console.log(authorization);
-        if (!authorization) {
-            throw new Error("Invalid Action");
+        // if (!authorization) {
+        //     throw new Error("Invalid Action");
+        // }
+        const authToken = req.cookies?.authToken || authorization?.replace('Bearer ', '');
+        if (!authToken) {
+            throw new Error("User AuthToken not found in middleware");
         }
-        const authToken = authorization.replace('Bearer ', '');
-
         jwt.verify(authToken, process.env.SIGNATURE, async (err, user) => {
             if (err) {
                 console.log('Error while verifying auth Token: ', err);

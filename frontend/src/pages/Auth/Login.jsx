@@ -46,6 +46,7 @@ const Login = () => {
         const data = await fetch(`${url}/api/auth/login`, {
             method: 'POST',
             mode: 'cors',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -54,9 +55,11 @@ const Login = () => {
                 password: formData.password
             })
         });
+        console.log(data);
         const response = await data.json();
+        console.log(response);
         if (response.success) {
-            localStorage.setItem("authToken", response.authToken);
+            // localStorage.setItem("authToken", response.authToken);
             toast.success("Login Successfull");
             setLoading(false);
             navigate("/");

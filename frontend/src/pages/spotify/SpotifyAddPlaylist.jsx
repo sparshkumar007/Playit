@@ -22,8 +22,9 @@ const SpotifyAddPlaylist = () => {
         let response = await fetch(`${url}/api/spotify/addPlaylist`, {
             method: 'POST',
             mode: 'cors',
+            credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({

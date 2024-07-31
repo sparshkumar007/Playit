@@ -15,8 +15,9 @@ const SpotifySongs = () => {
             const playlistId = sessionStorage.getItem('playlistId');
             let response = await fetch(`${url}/api/spotify/fetchSongs/${playlistId}`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 }
             })
             response = await response.json();

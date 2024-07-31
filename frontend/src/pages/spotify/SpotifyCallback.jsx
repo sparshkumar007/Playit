@@ -10,7 +10,7 @@ const SpotifyCallback = () => {
     const [message, setMessage] = useState('Loading...');
     const [timeLeft, setTimeLeft] = useState(5);
     const handle = async () => {
-        const authToken = localStorage.getItem('authToken');
+        // const authToken = localStorage.getItem('authToken');
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const code = urlParams.get('code');
@@ -18,9 +18,10 @@ const SpotifyCallback = () => {
         const response = await fetch(`${url}/api/spotify/fetchAccessToken?code=${code}&state=${state}`, {
             method: 'GET',
             mode: 'cors',
+            credentials: 'include',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${authToken}`
+                // 'Authorization': `Bearer ${authToken}`
             }
         })
         const res = await response.json();

@@ -13,6 +13,8 @@ import SpotifyPlaylists from './pages/spotify/SpotifyPlaylists'
 import SpotifySongs from './pages/spotify/SpotifySongs'
 import SpotifyAddPlaylist from './pages/spotify/SpotifyAddPlaylist'
 import SpotifyAddSongs from './pages/spotify/SpotifyAddSongs'
+import LastfmHome from './pages/lastFm/LastfmHome'
+import LastfmAuth from './pages/lastFm/LastfmAuth'
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
         <Route path="/spotifySongs" element={<SpotifySongs />}></Route>
         <Route path="/spotifyAddPlaylist" element={<SpotifyAddPlaylist />}></Route>
         <Route path="/spotifyAddSongs" element={<SpotifyAddSongs />}></Route>
+
+        <Route path="/lastfm" element={<LastfmHome />}></Route>
+        <Route path="/lastfmAuth" element={<LastfmAuth />}></Route>
       </Routes >
       <ToastContainer />
     </>
